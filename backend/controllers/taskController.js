@@ -16,23 +16,43 @@ const getTasksByProject = async (req, res) => {
 };
 
 // CREATE TASK
-const createTask = async (req, res) => {
-    try {
-        const { title, description, project } = req.body;
 
-        const task = await Task.create({
-            title,
-            description,
-            project,
-        });
+const createTask = async (
+  req,
+  res
+) => {
+  try {
+    console.log("REQ BODY:", req.body);
 
-        res.status(201).json(task);
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
-    }
+    const {
+      title,
+      description,
+      status,
+      projectId,
+    } = req.body;
+
+    const task = await Task.create({
+      title,
+      description,
+      status,
+      project: projectId,
+    });
+
+    console.log("TASK CREATED:", task);
+
+    res.status(201).json(task);
+  } catch (error) {
+    console.log("TASK ERROR:", error);
+
+    res.status(500).json({
+      message:
+        "Failed to create task",
+      error: error.message,
+    });
+  }
 };
+
+
 
 // UPDATE TASK
 const updateTask = async (req, res) => {

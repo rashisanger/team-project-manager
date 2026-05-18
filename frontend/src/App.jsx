@@ -18,6 +18,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 
 import ProjectDetail from "./pages/ProjectDetail";
+import Projects from "./pages/Projects";
 
 function App() {
   const { isAuthenticated } =
@@ -59,10 +60,12 @@ function App() {
         path="/projects"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <Projects/>
           </ProtectedRoute>
         }
       />
+      
+
       
 
       {/* Protected Project Detail */}

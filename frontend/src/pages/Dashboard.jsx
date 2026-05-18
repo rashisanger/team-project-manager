@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 
 import ProjectCard from "../components/ProjectCard";
+import StatsCard from "../components/StatsCard";
 
 import API from "../api/axios";
 
@@ -19,10 +20,18 @@ const Dashboard = () => {
     title: "",
     description: "",
   });
+    const [stats, setStats] = useState({
+        totalProjects: 0,
+        totalTasks: 0,
+        todoTasks: 0,
+        inProgressTasks: 0,
+        completedTasks: 0,
+    });
 
   // Fetch projects on mount
   useEffect(() => {
     fetchProjects();
+    fetchStats();
   }, []);
 
   const fetchProjects = async () => {
@@ -35,6 +44,17 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
+  };
+    const fetchStats = async () => {
+        try {
+            const { data } = await API.get(
+                "/dashboard/stats"
+            );
+
+            setStats(data);
+        } catch (error) {
+            console.log(error);
+        }
   };
 
   // Create project
@@ -134,6 +154,32 @@ const Dashboard = () => {
           </button>
         </form>
       )}
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+              <StatsCard
+                  title="Projects"
+                  value={stats.totalProjects}
+              />
+
+              <StatsCard
+                  title="Tasks"
+                  value={stats.totalTasks}
+              />
+
+              <StatsCard
+                  title="Todo"
+                  value={stats.todoTasks}
+              />
+
+              <StatsCard
+                  title="In Progress"
+                  value={stats.inProgressTasks}
+              />
+
+              <StatsCard
+                  title="Completed"
+                  value={stats.completedTasks}
+              />
+          </div>
 
       {/* Loading */}
       {loading ? (

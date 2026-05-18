@@ -12,7 +12,7 @@ const {
 } = require("../controllers/taskController");
 
 // Routes
-router.get("/:projectId", protect, getTasksByProject);
+router.get("/project/:projectId", protect, getTasksByProject);
 
 router.post("/", protect, createTask);
 
