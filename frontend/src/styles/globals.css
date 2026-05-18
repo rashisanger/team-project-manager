@@ -1,0 +1,56 @@
+
+@import "tailwindcss";
+
+body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 9999px;
+}
+
+/* Card Utility */
+.card {
+    @apply bg-white border border-slate-200 rounded-xl shadow-sm p-5 transition-all duration-150;
+}
+
+/* Status Badges */
+.badge-todo {
+    @apply bg-slate-100 text-slate-600 text-xs px-3 py-1 rounded-full font-medium uppercase tracking-wide;
+}
+
+.badge-in-progress {
+    @apply bg-blue-50 text-blue-600 text-xs px-3 py-1 rounded-full font-medium uppercase tracking-wide;
+}
+
+.badge-done {
+    @apply bg-green-50 text-green-600 text-xs px-3 py-1 rounded-full font-medium uppercase tracking-wide;
+}
+
+/* Inputs */
+.input {
+    @apply h-10 w-full rounded-lg border border-slate-200 px-3 outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+}
+
+/* Buttons */
+.btn-primary {
+    @apply bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg px-4 py-2 font-medium transition-all duration-150 active:scale-[0.98];
+}
+
+.btn-secondary {
+    @apply bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-lg px-4 py-2 font-medium transition-all duration-150 active:scale-[0.98];
+}
+
+.btn-danger {
+    @apply bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg px-4 py-2 font-medium transition-all duration-150 active:scale-[0.98];
+}
