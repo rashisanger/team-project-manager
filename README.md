@@ -380,7 +380,7 @@ MongoDB Atlas
 
 # 👨‍💻 Author
 
-Built by Vaish using MERN Stack + DevOps + Cloud Native technologies.
+Built by Rashi using MERN Stack + DevOps + Cloud Native technologies.
 
 ---
 
